@@ -15,7 +15,7 @@ public enum WSTagAcceptOption {
 }
 
 open class WSTagsField: UIScrollView {
-    fileprivate let textField = BackspaceDetectingTextField()
+    open let textField = BackspaceDetectingTextField()
 
     /// Dedicated text field delegate.
     open weak var textDelegate: UITextFieldDelegate?
@@ -553,7 +553,7 @@ extension WSTagsField {
         textField.font = font
         textField.textColor = fieldTextColor
         addSubview(textField)
-
+        
         layerBoundsObserver = self.observe(\.layer.bounds, options: [.old, .new]) { [weak self] sender, change in
             guard change.oldValue?.size.width != change.newValue?.size.width else {
                 return
